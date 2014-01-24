@@ -93,6 +93,7 @@
     <Compile Include="UserInteraction\WindowsOpenFileDialog.cs" />
     <Compile Include="UserInteraction\WindowsQuestionBoxYesNo.cs" />
     <Compile Include="UserInteraction\WpfWaitCursor.cs" />
+    <Compile Include="VisualTreeSearch.cs" />
     <Compile Include="WpfViewLoader.cs" />
   </ItemGroup>
   <ItemGroup>
