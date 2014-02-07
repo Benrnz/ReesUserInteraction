@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Rees.Wpf
 {
@@ -8,11 +9,12 @@ namespace Rees.Wpf
 
         IEnumerable<KeyValuePair<string, string>> Files();
 
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate",
+            Justification = "Method will do significant work to create and return a object for persistence.")]
+        IPersistent GetPersistentData();
+
         IEnumerable<KeyValuePair<string, string>> Remove(string fullFileName);
 
         IEnumerable<KeyValuePair<string, string>> UpdateFile(string fullFileName);
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Justification = "Method will do significant work to create and return a object for persistence.")]
-        IPersistent GetPersistentData();
     }
 }

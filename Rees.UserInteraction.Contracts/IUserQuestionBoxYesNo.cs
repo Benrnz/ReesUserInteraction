@@ -1,12 +1,12 @@
 ﻿namespace Rees.UserInteraction.Contracts
 {
     /// <summary>
-    /// Represents a question to the user towhich the user can only respond with Yes, No, or Cancel.
+    ///     Represents a question to the user towhich the user can only respond with Yes, No, or Cancel.
     /// </summary>
     public interface IUserQuestionBoxYesNo
     {
         /// <summary>
-        /// Show the question box with a caption and heading.
+        ///     Show the question box with a caption and heading.
         /// </summary>
         /// <param name="question">The yes/no question to show on the dialog.</param>
         /// <param name="heading">The optional heading for the dialog.</param>
@@ -14,7 +14,7 @@
         bool? Show(string question, string heading = "");
 
         /// <summary>
-        /// Show the question box with a caption and heading.
+        ///     Show the question box with a caption and heading.
         /// </summary>
         /// <param name="heading">The optional heading for the dialog.</param>
         /// <param name="questionFormat">The yes/no question to show on the dialog.</param>

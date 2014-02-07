@@ -11,7 +11,7 @@ namespace Rees.Wpf
 
             for (int i = 0; i < numVisuals; i++)
             {
-                var v = (Visual)VisualTreeHelper.GetChild(parent, i);
+                var v = (Visual) VisualTreeHelper.GetChild(parent, i);
                 child = v as T;
                 if (child == null)
                 {

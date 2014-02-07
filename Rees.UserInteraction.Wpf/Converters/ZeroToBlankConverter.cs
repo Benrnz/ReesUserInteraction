@@ -4,7 +4,7 @@ using System.Windows.Data;
 
 namespace Rees.Wpf.Converters
 {
-    public class ZeroToBlankConverter : IValueConverter 
+    public class ZeroToBlankConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -13,22 +13,22 @@ namespace Rees.Wpf.Converters
                 return null;
             }
 
-            if (value is decimal && (decimal)value == 0)
+            if (value is decimal && (decimal) value == 0)
             {
                 return null;
             }
 
-            if (value is double && (double)value == 0)
+            if (value is double && (double) value == 0)
             {
                 return null;
             }
 
-            if (value is int && (int)value == 0)
+            if (value is int && (int) value == 0)
             {
                 return null;
             }
 
-            if (value is long && (long)value == 0)
+            if (value is long && (long) value == 0)
             {
                 return null;
             }

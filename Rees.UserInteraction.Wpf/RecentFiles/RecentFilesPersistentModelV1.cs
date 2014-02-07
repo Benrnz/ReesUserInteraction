@@ -19,7 +19,8 @@ namespace Rees.Wpf.RecentFiles
             var dictionaryOfFiles = model as Dictionary<string, RecentFileV1>;
             if (dictionaryOfFiles == null)
             {
-                throw new ArgumentException("model argument should be a Dictionary<string, RecentFileV1> and its " + model.GetType(), "model");
+                throw new ArgumentException(
+                    "model argument should be a Dictionary<string, RecentFileV1> and its " + model.GetType(), "model");
             }
 
             Model = dictionaryOfFiles;

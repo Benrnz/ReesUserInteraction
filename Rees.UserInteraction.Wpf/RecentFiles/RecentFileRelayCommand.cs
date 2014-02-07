@@ -11,7 +11,8 @@ namespace Rees.Wpf.RecentFiles
             FullFileName = fullFileName;
         }
 
-        public RecentFileRelayCommand(string name, string fullFileName, Action<string> execute, Func<string, bool> canExecute) : base(execute, canExecute)
+        public RecentFileRelayCommand(string name, string fullFileName, Action<string> execute,
+            Func<string, bool> canExecute) : base(execute, canExecute)
         {
             Name = name;
             FullFileName = fullFileName;

@@ -1,12 +1,12 @@
 ﻿namespace Rees.UserInteraction.Contracts
 {
     /// <summary>
-    /// Shows an input box to get one string of text from the user.
+    ///     Shows an input box to get one string of text from the user.
     /// </summary>
     public interface IUserInputBox
     {
         /// <summary>
-        /// Show an input box with a heading and a question.
+        ///     Show an input box with a heading and a question.
         /// </summary>
         /// <param name="heading">The window title</param>
         /// <param name="question">The main question text</param>

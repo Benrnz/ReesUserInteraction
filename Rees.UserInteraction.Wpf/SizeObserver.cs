@@ -6,24 +6,36 @@ namespace Rees.Wpf
     {
         public static readonly DependencyProperty ObserveProperty = DependencyProperty.RegisterAttached(
             "Observe",
-            typeof(bool),
-            typeof(SizeObserver),
+            typeof (bool),
+            typeof (SizeObserver),
             new FrameworkPropertyMetadata(OnObserveChanged));
-
-        public static readonly DependencyProperty ObservedWidthProperty = DependencyProperty.RegisterAttached(
-            "ObservedWidth",
-            typeof(double),
-            typeof(SizeObserver));
 
         public static readonly DependencyProperty ObservedHeightProperty = DependencyProperty.RegisterAttached(
             "ObservedHeight",
-            typeof(double),
-            typeof(SizeObserver));
+            typeof (double),
+            typeof (SizeObserver));
+
+        public static readonly DependencyProperty ObservedWidthProperty = DependencyProperty.RegisterAttached(
+            "ObservedWidth",
+            typeof (double),
+            typeof (SizeObserver));
 
         public static bool GetObserve(FrameworkElement frameworkElement)
         {
             //frameworkElement.AssertNotNull("frameworkElement");
-            return (bool)frameworkElement.GetValue(ObserveProperty);
+            return (bool) frameworkElement.GetValue(ObserveProperty);
+        }
+
+        public static double GetObservedHeight(FrameworkElement frameworkElement)
+        {
+            //frameworkElement.AssertNotNull("frameworkElement");
+            return (double) frameworkElement.GetValue(ObservedHeightProperty);
+        }
+
+        public static double GetObservedWidth(FrameworkElement frameworkElement)
+        {
+            //frameworkElement.AssertNotNull("frameworkElement");
+            return (double) frameworkElement.GetValue(ObservedWidthProperty);
         }
 
         public static void SetObserve(FrameworkElement frameworkElement, bool observe)
@@ -32,10 +44,10 @@ namespace Rees.Wpf
             frameworkElement.SetValue(ObserveProperty, observe);
         }
 
-        public static double GetObservedWidth(FrameworkElement frameworkElement)
+        public static void SetObservedHeight(FrameworkElement frameworkElement, double observedHeight)
         {
             //frameworkElement.AssertNotNull("frameworkElement");
-            return (double)frameworkElement.GetValue(ObservedWidthProperty);
+            frameworkElement.SetValue(ObservedHeightProperty, observedHeight);
         }
 
         public static void SetObservedWidth(FrameworkElement frameworkElement, double observedWidth)
@@ -44,23 +56,16 @@ namespace Rees.Wpf
             frameworkElement.SetValue(ObservedWidthProperty, observedWidth);
         }
 
-        public static double GetObservedHeight(FrameworkElement frameworkElement)
+        private static void OnFrameworkElementSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            //frameworkElement.AssertNotNull("frameworkElement");
-            return (double)frameworkElement.GetValue(ObservedHeightProperty);
-        }
-
-        public static void SetObservedHeight(FrameworkElement frameworkElement, double observedHeight)
-        {
-            //frameworkElement.AssertNotNull("frameworkElement");
-            frameworkElement.SetValue(ObservedHeightProperty, observedHeight);
+            UpdateObservedSizesForFrameworkElement((FrameworkElement) sender);
         }
 
         private static void OnObserveChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            var frameworkElement = (FrameworkElement)dependencyObject;
+            var frameworkElement = (FrameworkElement) dependencyObject;
 
-            if ((bool)e.NewValue)
+            if ((bool) e.NewValue)
             {
                 frameworkElement.SizeChanged += OnFrameworkElementSizeChanged;
                 UpdateObservedSizesForFrameworkElement(frameworkElement);
@@ -69,11 +74,6 @@ namespace Rees.Wpf
             {
                 frameworkElement.SizeChanged -= OnFrameworkElementSizeChanged;
             }
-        }
-
-        private static void OnFrameworkElementSizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            UpdateObservedSizesForFrameworkElement((FrameworkElement)sender);
         }
 
         private static void UpdateObservedSizesForFrameworkElement(FrameworkElement frameworkElement)

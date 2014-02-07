@@ -15,7 +15,8 @@ namespace Rees.Wpf.ApplicationState
                 .Where(group => group.Key != null)
                 .Select(group => group.First());
 
-            RehydratedModels = new ReadOnlyDictionary<Type, IPersistent>(removeDuplicates.ToDictionary(m => m.GetType(), m => m));
+            RehydratedModels =
+                new ReadOnlyDictionary<Type, IPersistent>(removeDuplicates.ToDictionary(m => m.GetType(), m => m));
         }
 
         public IReadOnlyDictionary<Type, IPersistent> RehydratedModels { get; private set; }

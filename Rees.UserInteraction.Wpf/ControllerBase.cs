@@ -20,18 +20,12 @@ namespace Rees.Wpf
 
         protected Dispatcher Dispatcher
         {
-            get
-            {
-                return this.doNotUseDispatcher;
-            }
+            get { return this.doNotUseDispatcher; }
         }
 
         protected IMessenger Messenger
         {
-            get
-            {
-                return this.doNotUseMessenger;
-            }
+            get { return this.doNotUseMessenger; }
         }
     }
 }

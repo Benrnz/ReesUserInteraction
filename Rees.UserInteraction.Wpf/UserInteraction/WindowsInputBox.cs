@@ -3,7 +3,7 @@ using Rees.UserInteraction.Contracts;
 
 namespace Rees.Wpf.UserInteraction
 {
-    public class WindowsInputBox : IUserInputBox 
+    public class WindowsInputBox : IUserInputBox
     {
         private readonly IViewLoader viewLoader;
 
@@ -17,12 +17,17 @@ namespace Rees.Wpf.UserInteraction
             this.viewLoader = viewLoader;
         }
 
+        public string Heading { get; set; }
+
+        public string Input { get; set; }
+        public string Question { get; set; }
+
         public string Show(string heading, string question, string defaultInput = "")
         {
             Heading = heading;
             Question = question;
             Input = defaultInput;
-            var result = this.viewLoader.ShowDialog(this);
+            bool? result = this.viewLoader.ShowDialog(this);
 
             if (result == null || result == false)
             {
@@ -34,11 +39,5 @@ namespace Rees.Wpf.UserInteraction
             Question = string.Empty;
             return Input ?? string.Empty;
         }
-
-        public string Heading { get; set; }
-
-        public string Question { get; set; }
-
-        public string Input { get; set; }
     }
 }

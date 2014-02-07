@@ -41,7 +41,12 @@ namespace Rees.Wpf.RecentFiles
             }
             else
             {
-                var newFile = new RecentFileV1 { FullFileName = fullFileName, Name = GetName(fullFileName), When = DateTime.Now };
+                var newFile = new RecentFileV1
+                {
+                    FullFileName = fullFileName,
+                    Name = GetName(fullFileName),
+                    When = DateTime.Now
+                };
                 this.files.Add(fullFileName, newFile);
             }
 
@@ -88,9 +93,9 @@ namespace Rees.Wpf.RecentFiles
         private IEnumerable<KeyValuePair<string, string>> ConvertAndReturnRecentFiles()
         {
             List<KeyValuePair<string, string>> results = this.files
-                                                             .OrderByDescending(f => f.Value.When)
-                                                             .Select(f => new KeyValuePair<string, string>(f.Key, f.Value.Name))
-                                                             .ToList();
+                .OrderByDescending(f => f.Value.When)
+                .Select(f => new KeyValuePair<string, string>(f.Key, f.Value.Name))
+                .ToList();
             return results;
         }
 
@@ -99,7 +104,8 @@ namespace Rees.Wpf.RecentFiles
             IPersistent emptyModel = this.persistentModelFactory(this.files);
             if (message.RehydratedModels.ContainsKey(emptyModel.GetType()))
             {
-                this.files = message.RehydratedModels[emptyModel.GetType()].AdaptModel<Dictionary<string, RecentFileV1>>();
+                this.files =
+                    message.RehydratedModels[emptyModel.GetType()].AdaptModel<Dictionary<string, RecentFileV1>>();
             }
         }
 

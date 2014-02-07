@@ -9,19 +9,20 @@ namespace Rees.Wpf.ApplicationState
     {
         private readonly List<IPersistent> modelsToPersist = new List<IPersistent>();
 
-        public void PersistThisModel(IPersistent model) 
-        {
-            if (modelsToPersist.Any(m => m.GetType() == model.GetType()))
-            {
-                throw new DuplicateNameException("Attempt to save application state with a model that has already been saved.");
-            }
-
-            this.modelsToPersist.Add(model);
-        }
-
         public IReadOnlyCollection<IPersistent> PersistentData
         {
             get { return this.modelsToPersist; }
+        }
+
+        public void PersistThisModel(IPersistent model)
+        {
+            if (this.modelsToPersist.Any(m => m.GetType() == model.GetType()))
+            {
+                throw new DuplicateNameException(
+                    "Attempt to save application state with a model that has already been saved.");
+            }
+
+            this.modelsToPersist.Add(model);
         }
     }
 }
