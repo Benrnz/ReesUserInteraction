@@ -69,6 +69,7 @@
     <Compile Include="ApplicationState\PersistApplicationStateAsXaml.cs" />
     <Compile Include="ControllerBase.cs" />
     <Compile Include="Converters\BoolToVisibility2Converter.cs" />
+    <Compile Include="Converters\TextToStaticResourceConverter.cs" />
     <Compile Include="Converters\NotBoolToVisibilityConverter.cs" />
     <Compile Include="Converters\NotNullToVisibilityConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
