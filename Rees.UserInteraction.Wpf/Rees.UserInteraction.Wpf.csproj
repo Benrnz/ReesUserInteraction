@@ -63,6 +63,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationState\ApplicationStateLoadFinishedMessage.cs" />
     <Compile Include="ApplicationState\ApplicationStateLoadedMessage.cs" />
     <Compile Include="ApplicationState\ApplicationStateRequestedMessage.cs" />
     <Compile Include="ApplicationState\BadApplicationStateFileFormatException.cs" />
