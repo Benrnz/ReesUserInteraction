@@ -9,6 +9,11 @@ namespace Rees.Wpf.RecentFiles
         {
         }
 
+        public int Sequence
+        {
+            get { return 100; }
+        }
+
         public RecentFilesPersistentModelV1(object model)
         {
             if (model == null)

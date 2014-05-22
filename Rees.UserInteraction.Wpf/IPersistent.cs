@@ -8,6 +8,8 @@
     {
         object Model { get; set; }
 
+        int Sequence { get; }
+
         T AdaptModel<T>();
     }
 }
