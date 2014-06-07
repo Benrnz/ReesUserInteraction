@@ -9,6 +9,16 @@ namespace Rees.Wpf.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            var stringParameter = parameter as string;
+
+            if (stringParameter != null && (stringParameter == string.Empty || stringParameter == "Empty"))
+            {
+                if (value is string)
+                {
+                    return string.IsNullOrWhiteSpace(value.ToString()) ? Visibility.Hidden : Visibility.Visible;
+                }
+            }
+
             return value == null ? Visibility.Hidden : Visibility.Visible;
         }
 
