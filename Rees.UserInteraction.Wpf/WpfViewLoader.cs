@@ -4,6 +4,10 @@ using Rees.UserInteraction.Contracts;
 
 namespace Rees.Wpf
 {
+    /// <summary>
+    /// Used to abstract away from instantiating and interacting with real windows within Controller and ViewModel code.
+    /// </summary>
+    /// <typeparam name="T">The view load.</typeparam>
     public class WpfViewLoader<T> : IViewLoader where T : Window, new()
     {
         private T window;
