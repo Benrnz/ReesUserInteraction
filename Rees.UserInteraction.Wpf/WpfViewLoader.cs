@@ -5,19 +5,19 @@ using Rees.UserInteraction.Contracts;
 namespace Rees.Wpf
 {
     /// <summary>
-    /// Used to abstract away from instantiating and interacting with real windows within Controller and ViewModel code.
+    ///     Used to abstract away from instantiating and interacting with real windows within Controller and ViewModel code.
     /// </summary>
     /// <typeparam name="T">The view load.</typeparam>
     public class WpfViewLoader<T> : IViewLoader where T : Window, new()
     {
-        private T window;
+        protected T TargetWindow { get; set; }
 
         public virtual void Close()
         {
-            if (this.window != null)
+            if (TargetWindow != null)
             {
-                this.window.Close();
-                this.window = null;
+                TargetWindow.Close();
+                TargetWindow = null;
             }
         }
 
@@ -25,11 +25,11 @@ namespace Rees.Wpf
             Justification = "Clean up code. The window is orphaned or has been instructed to close.")]
         public virtual void Show(object context)
         {
-            if (this.window != null)
+            if (TargetWindow != null)
             {
                 try
                 {
-                    this.window.Close();
+                    TargetWindow.Close();
                 }
 // ReSharper disable EmptyGeneralCatchClause
                 catch 
@@ -39,15 +39,15 @@ namespace Rees.Wpf
                 }
             }
 
-            this.window = new T {DataContext = context};
-            this.window.Show();
+            TargetWindow = new T {DataContext = context};
+            TargetWindow.Show();
         }
 
         public virtual bool? ShowDialog(object context)
         {
-            this.window = new T {DataContext = context, Owner = Application.Current.MainWindow};
-            bool? result = this.window.ShowDialog();
-            this.window = null;
+            TargetWindow = new T {DataContext = context, Owner = Application.Current.MainWindow};
+            bool? result = TargetWindow.ShowDialog();
+            TargetWindow = null;
             return result;
         }
     }
