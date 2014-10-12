@@ -11,16 +11,15 @@ namespace Rees.Wpf.UserInteraction
             Justification = "Optional parameters are prefered unless theres a reason not to.")]
         public override void Show(string message, string headingCaption = "")
         {
-            // Ensure on the UI thread.
-            string content = string.Format(
-                CultureInfo.CurrentCulture,
-                "{0}{1}{2}",
-                headingCaption,
-                string.IsNullOrWhiteSpace(headingCaption) ? string.Empty : "\n\n",
-                RationaliseMessage(message));
+            string heading = string.IsNullOrWhiteSpace(headingCaption)
+                ? Application.Current.MainWindow.Title ?? string.Empty
+                : headingCaption;
+
+            string content = RationaliseMessage(message);
+
             if (Application.Current.MainWindow != null)
             {
-                MessageBox.Show(Application.Current.MainWindow, content, headingCaption);
+                MessageBox.Show(Application.Current.MainWindow, content, heading);
             }
             else
             {
