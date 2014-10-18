@@ -12,6 +12,7 @@ namespace Rees.Wpf.UserInteraction
         public override void Show(string message, string headingCaption = "")
         {
             string heading;
+            bool unowned = false;
             try
             {
                 heading = string.IsNullOrWhiteSpace(headingCaption)
@@ -22,17 +23,32 @@ namespace Rees.Wpf.UserInteraction
             {
                 // This will occur if another thread accesses Application.Current.MainWindow other than the main thread.
                 heading = string.Empty;
+                unowned = true;
             }
 
             string content = RationaliseMessage(message);
 
-            if (Application.Current.MainWindow != null)
+
+            if (unowned)
             {
-                MessageBox.Show(Application.Current.MainWindow, content, heading);
+                MessageBox.Show(content, heading);
+                return;
             }
-            else
+
+            try
             {
-                MessageBox.Show(content);
+                if (Application.Current.MainWindow != null)
+                {
+                    MessageBox.Show(Application.Current.MainWindow, content, heading);
+                }
+                else
+                {
+                    MessageBox.Show(content);
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show(content, heading);
             }
         }
 
