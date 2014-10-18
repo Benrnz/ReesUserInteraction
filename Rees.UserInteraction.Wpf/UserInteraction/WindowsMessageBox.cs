@@ -11,9 +11,18 @@ namespace Rees.Wpf.UserInteraction
             Justification = "Optional parameters are prefered unless theres a reason not to.")]
         public override void Show(string message, string headingCaption = "")
         {
-            string heading = string.IsNullOrWhiteSpace(headingCaption)
-                ? Application.Current.MainWindow.Title ?? string.Empty
-                : headingCaption;
+            string heading;
+            try
+            {
+                heading = string.IsNullOrWhiteSpace(headingCaption)
+                    ? Application.Current.MainWindow.Title ?? string.Empty
+                    : headingCaption;
+            }
+            catch (InvalidOperationException)
+            {
+                // This will occur if another thread accesses Application.Current.MainWindow other than the main thread.
+                heading = string.Empty;
+            }
 
             string content = RationaliseMessage(message);
 
