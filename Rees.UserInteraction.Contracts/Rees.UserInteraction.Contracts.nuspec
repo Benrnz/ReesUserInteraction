@@ -5,10 +5,15 @@
     <version>$version$</version>
     <authors>$author$</authors>
     <owners>Rees.biz</owners>
-    <description>$description$</description>
+    <description>
+      A toolkit for abstracting user interaction in Windows based UI's. 
+      For example: Using the IUserMessageBox provides several advantages:
+      Supports using the MVVM pattern.
+      Enables unit testing with clear concise tests, and no pop-ups.
+      Code can be shared across several Windows based UI technologies.
+    </description>
     <language>en-US</language>
     <requiresLicenseAcceptance>false</requiresLicenseAcceptance>
     <licenseUrl>https://github.com/Benrnz/ReesUserInteraction/blob/master/LICENSE</licenseUrl>
-    <dependencies/>
   </metadata>
 </package>
