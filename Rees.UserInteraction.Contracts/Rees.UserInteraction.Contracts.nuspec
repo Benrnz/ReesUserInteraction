@@ -13,7 +13,7 @@
       Code can be shared across several Windows based UI technologies.
     </description>
     <language>en-US</language>
-    <requiresLicenseAcceptance>false</requiresLicenseAcceptance>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://github.com/Benrnz/ReesUserInteraction/blob/master/LICENSE</licenseUrl>
   </metadata>
 </package>
