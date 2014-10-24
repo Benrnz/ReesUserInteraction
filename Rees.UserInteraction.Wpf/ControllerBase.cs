@@ -1,14 +1,17 @@
 ﻿using System.Windows.Threading;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Messaging;
 
 namespace Rees.Wpf
 {
+    /// <summary>
+    /// Extension to the MvvmLight <see cref="ViewModelBase"/> to include a reference to the Dispatcher for the thread that
+    /// executes the constructor. 
+    /// </summary>
     public class ControllerBase : ViewModelBase
     {
-        private readonly Dispatcher doNotUseDispatcher;
         // ReSharper disable FieldCanBeMadeReadOnly.Local
         // Required for testing
+        private readonly Dispatcher doNotUseDispatcher;
         // ReSharper restore FieldCanBeMadeReadOnly.Local
 
         public ControllerBase()
