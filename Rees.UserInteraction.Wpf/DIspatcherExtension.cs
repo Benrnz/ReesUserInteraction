@@ -3,6 +3,9 @@ using System.Windows.Threading;
 
 namespace Rees.Wpf
 {
+    /// <summary>
+    /// An extension class to add convience methods to the Dispatcher used in Wpf.
+    /// </summary>
     public static class DispatcherExtension
     {
         /// <summary>

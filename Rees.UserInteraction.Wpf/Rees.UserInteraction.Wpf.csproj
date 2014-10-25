@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\Rees.Wpf.XML</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -95,7 +98,7 @@
     <Compile Include="RecentFiles\RecentFileRelayCommand.cs" />
     <Compile Include="RecentFiles\RecentFilesPersistentModelV1.cs" />
     <Compile Include="RecentFiles\RecentFileV1.cs" />
-    <Compile Include="RecentFiles\XmlRecentFileManager.cs" />
+    <Compile Include="RecentFiles\AppStateRecentFileManager.cs" />
     <Compile Include="ShutdownMessage.cs" />
     <Compile Include="SizeObserver.cs" />
     <Compile Include="UserInteraction\WindowsSaveFileDialog.cs" />

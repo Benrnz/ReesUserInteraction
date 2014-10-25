@@ -2,6 +2,16 @@
 
 namespace Rees.Wpf
 {
+    /// <summary>
+    /// Sourced from http://stackoverflow.com/questions/1083224/pushing-read-only-gui-properties-back-into-viewmodel
+    /// An Attached behavior that has ObservedWidth and ObservedHeight attached properties. It also has an Observe property that is used to do the initial hook-up. Usage looks like this:
+    /// &lt;UserControl ...
+    /// SizeObserver.Observe="True"
+    /// SizeObserver.ObservedWidth="{Binding Width, Mode=OneWayToSource}"
+    /// SizeObserver.ObservedHeight="{Binding Height, Mode=OneWayToSource}"
+    /// So the view model has Width and Height properties that are always in sync with the ObservedWidth and ObservedHeight attached properties. The Observe property simply attaches to the SizeChanged event of the FrameworkElement. In the handle, it updates its ObservedWidth and ObservedHeight properties. Ergo, the Width and Height of the view model is always in sync with the ActualWidth and ActualHeight of the UserControl.
+    /// Perhaps not the perfect solution (I agree - read-only DPs should support OneWayToSource bindings), but it works and it upholds the MVVM pattern. Obviously, the ObservedWidth and ObservedHeight DPs are not read-only.
+    /// </summary>
     public static class SizeObserver
     {
         public static readonly DependencyProperty ObserveProperty = DependencyProperty.RegisterAttached(

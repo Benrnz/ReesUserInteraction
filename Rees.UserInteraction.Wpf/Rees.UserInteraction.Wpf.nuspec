@@ -19,5 +19,11 @@
     <dependencies>
       <dependency id="Rees.UserInteraction.Contracts" version="$version$" />
     </dependencies>
+    <files>
+      <file src="bin\Release\Rees.Wpf.xml" target="lib\net451" />
+      <file src="bin\Release\Rees.Wpf.pdb" target="lib\net451" />
+      <file src="bin\Release\Rees.UserInteraction.Contracts.xml" target="lib\net451" />
+      <file src="bin\Release\Rees.UserInteraction.Contracts.pdb" target="lib\net451" />
+    </files>
   </metadata>
 </package>

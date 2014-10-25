@@ -16,6 +16,9 @@ namespace Rees.Wpf
         public double? Width { get; set; }
         protected T TargetWindow { get; set; }
 
+        /// <summary>
+        ///     Close and unload the view immediately.
+        /// </summary>
         public virtual void Close()
         {
             if (TargetWindow != null)
@@ -25,6 +28,10 @@ namespace Rees.Wpf
             }
         }
 
+        /// <summary>
+        ///     Show the view in a normal way.
+        /// </summary>
+        /// <param name="context">The model or context the view can use for binding or reference purposes.</param>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes",
             Justification = "Clean up code. The window is orphaned or has been instructed to close.")]
         public virtual void Show(object context)
@@ -42,12 +49,32 @@ namespace Rees.Wpf
                     // Swallow any exception trying to close the orphaned window.
                 }
             }
-            
+
             TargetWindow = CreateWindow();
             ConfigureWindow(context);
             TargetWindow.Show();
         }
 
+        /// <summary>
+        ///     Show the view in a dialog manner.
+        /// </summary>
+        /// <param name="context">The model or context the view can use for binding or reference purposes.</param>
+        /// <returns>
+        ///     Used to indicate how the user closed the dialog.  Can be used to determine the difference between cancelling
+        ///     or cofirmation.
+        /// </returns>
+        public virtual bool? ShowDialog(object context)
+        {
+            TargetWindow = new T {DataContext = context, Owner = Application.Current.MainWindow};
+            bool? result = TargetWindow.ShowDialog();
+            TargetWindow = null;
+            return result;
+        }
+
+        /// <summary>
+        ///     Configures the window with the given height, width parameters etc.
+        /// </summary>
+        /// <param name="context">The Data Context.</param>
         protected virtual void ConfigureWindow(object context)
         {
             TargetWindow.DataContext = context;
@@ -57,17 +84,12 @@ namespace Rees.Wpf
             if (MinWidth != null) TargetWindow.MinWidth = MinWidth.Value;
         }
 
+        /// <summary>
+        ///     Creates the window.
+        /// </summary>
         protected virtual T CreateWindow()
         {
             return new T();
-        }
-
-        public virtual bool? ShowDialog(object context)
-        {
-            TargetWindow = new T {DataContext = context, Owner = Application.Current.MainWindow};
-            bool? result = TargetWindow.ShowDialog();
-            TargetWindow = null;
-            return result;
         }
     }
 }

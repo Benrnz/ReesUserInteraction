@@ -14,6 +14,9 @@ namespace Rees.Wpf
         private readonly Dispatcher doNotUseDispatcher;
         // ReSharper restore FieldCanBeMadeReadOnly.Local
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ControllerBase"/> class.
+        /// </summary>
         public ControllerBase()
         {
             // This relies on the Xaml being responsible for instantiating the controller.
@@ -21,6 +24,9 @@ namespace Rees.Wpf
             this.doNotUseDispatcher = Dispatcher.CurrentDispatcher;
         }
 
+        /// <summary>
+        /// Gets the dispatcher that was stored by the constructor. This will be the main UI thread dispatcher.
+        /// </summary>
         protected Dispatcher Dispatcher
         {
             get { return this.doNotUseDispatcher; }
