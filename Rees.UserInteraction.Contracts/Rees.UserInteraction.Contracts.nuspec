@@ -15,9 +15,10 @@
     <language>en-US</language>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://github.com/Benrnz/ReesUserInteraction/blob/master/LICENSE</licenseUrl>
+  </metadata>
     <files>
+      <file src="bin\Release\Rees.UserInteraction.Contracts.dll" target="lib\net451" />
       <file src="bin\Release\Rees.UserInteraction.Contracts.xml" target="lib\net451" />
       <file src="bin\Release\Rees.UserInteraction.Contracts.pdb" target="lib\net451" />
     </files>
-  </metadata>
 </package>
