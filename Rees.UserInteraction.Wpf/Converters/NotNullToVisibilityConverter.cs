@@ -25,11 +25,16 @@ namespace Rees.Wpf.Converters
         {
             var stringParameter = parameter as string;
 
-            if (stringParameter != null && (stringParameter == string.Empty || stringParameter == "Empty"))
+            if (stringParameter != null)
             {
-                if (value is string)
+                if (value is string && (stringParameter == string.Empty || stringParameter == "Empty"))
                 {
                     return string.IsNullOrWhiteSpace(value.ToString()) ? Visibility.Visible : Visibility.Hidden;
+                }
+
+                if (stringParameter == "Collapsed")
+                {
+                    return value == null ? Visibility.Visible : Visibility.Collapsed;
                 }
             }
 
