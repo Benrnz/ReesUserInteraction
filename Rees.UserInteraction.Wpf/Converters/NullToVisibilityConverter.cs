@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -24,21 +25,23 @@ namespace Rees.Wpf.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var stringParameter = parameter as string;
+            Visibility hiddenValue = Visibility.Hidden;
+            Func<bool> test = () => value == null;
 
             if (stringParameter != null)
             {
                 if (value is string && (stringParameter == string.Empty || stringParameter == "Empty"))
                 {
-                    return string.IsNullOrWhiteSpace(value.ToString()) ? Visibility.Hidden : Visibility.Visible;
+                    test = () => string.IsNullOrWhiteSpace(value.ToString());
                 }
 
                 if (stringParameter == "Collapsed")
                 {
-                    return value == null ? Visibility.Collapsed : Visibility.Visible;
+                    hiddenValue = Visibility.Collapsed;
                 }
             }
 
-            return value == null ? Visibility.Hidden : Visibility.Visible;
+            return test() ? hiddenValue : Visibility.Visible;
         }
 
         /// <summary>

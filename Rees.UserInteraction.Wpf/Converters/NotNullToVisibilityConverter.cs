@@ -24,21 +24,23 @@ namespace Rees.Wpf.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var stringParameter = parameter as string;
+            Visibility hiddenValue = Visibility.Hidden;
+            Func<bool> test = () => value == null;
 
             if (stringParameter != null)
             {
                 if (value is string && (stringParameter == string.Empty || stringParameter == "Empty"))
                 {
-                    return string.IsNullOrWhiteSpace(value.ToString()) ? Visibility.Visible : Visibility.Hidden;
+                    test = () => string.IsNullOrWhiteSpace(value.ToString());
                 }
 
                 if (stringParameter == "Collapsed")
                 {
-                    return value == null ? Visibility.Visible : Visibility.Collapsed;
+                    hiddenValue = Visibility.Collapsed;
                 }
             }
 
-            return value == null ? Visibility.Visible : Visibility.Hidden;
+            return test() ? Visibility.Visible: hiddenValue;
         }
 
         /// <summary>
