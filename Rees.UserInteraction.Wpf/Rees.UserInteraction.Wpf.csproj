@@ -81,6 +81,7 @@
     <Compile Include="Converters\BoolToVisibility2Converter.cs" />
     <Compile Include="Converters\DebuggerConverter.cs" />
     <Compile Include="Converters\MultiBoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\ConvertToStringConverter.cs" />
     <Compile Include="Converters\TextToResourceControlTemplateConverter.cs" />
     <Compile Include="Converters\TextToStaticResourceConverter.cs" />
     <Compile Include="Converters\NotBoolToVisibilityConverter.cs" />
