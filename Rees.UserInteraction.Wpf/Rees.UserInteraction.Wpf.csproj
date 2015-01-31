@@ -79,6 +79,7 @@
     <Compile Include="ApplicationState\PersistApplicationStateAsXaml.cs" />
     <Compile Include="ControllerBase.cs" />
     <Compile Include="Converters\BoolToVisibility2Converter.cs" />
+    <Compile Include="Converters\DebuggerConverter.cs" />
     <Compile Include="Converters\MultiBoolToVisibilityConverter.cs" />
     <Compile Include="Converters\TextToResourceControlTemplateConverter.cs" />
     <Compile Include="Converters\TextToStaticResourceConverter.cs" />
