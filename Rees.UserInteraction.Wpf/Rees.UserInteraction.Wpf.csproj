@@ -77,6 +77,7 @@
     <Compile Include="ApplicationState\ApplicationStateRequestedMessage.cs" />
     <Compile Include="ApplicationState\BadApplicationStateFileFormatException.cs" />
     <Compile Include="ApplicationState\PersistApplicationStateAsXaml.cs" />
+    <Compile Include="BubbleScrollEventBehaviour.cs" />
     <Compile Include="ControllerBase.cs" />
     <Compile Include="Converters\BoolToVisibility2Converter.cs" />
     <Compile Include="Converters\DebuggerConverter.cs" />
