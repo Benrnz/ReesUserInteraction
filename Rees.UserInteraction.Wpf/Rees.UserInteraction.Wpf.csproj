@@ -93,8 +93,6 @@
     <Compile Include="DIspatcherExtension.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IInitializableController.cs" />
-    <Compile Include="IPersistApplicationState.cs" />
-    <Compile Include="IPersistent.cs" />
     <Compile Include="IRecentFileManager.cs" />
     <Compile Include="Properties\Annotations.generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

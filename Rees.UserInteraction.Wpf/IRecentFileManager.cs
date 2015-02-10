@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Rees.UserInteraction.Contracts;
 
 namespace Rees.Wpf
 {

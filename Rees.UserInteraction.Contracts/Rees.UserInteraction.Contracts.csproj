@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPersistApplicationState.cs" />
+    <Compile Include="IPersistent.cs" />
     <Compile Include="IUserInputBox.cs" />
     <Compile Include="IUserMessageBox.cs" />
     <Compile Include="IUserPromptOpenFile.cs" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using GalaSoft.MvvmLight.Messaging;
+using Rees.UserInteraction.Contracts;
 
 namespace Rees.Wpf.ApplicationState
 {

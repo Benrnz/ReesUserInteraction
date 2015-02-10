@@ -2,6 +2,7 @@
 using System.Data;
 using System.Linq;
 using GalaSoft.MvvmLight.Messaging;
+using Rees.UserInteraction.Contracts;
 
 namespace Rees.Wpf.ApplicationState
 {

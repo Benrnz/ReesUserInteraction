@@ -3,23 +3,27 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using GalaSoft.MvvmLight.Messaging;
+using Rees.UserInteraction.Contracts;
 using Rees.Wpf.Annotations;
 using Rees.Wpf.ApplicationState;
 
 namespace Rees.Wpf.RecentFiles
 {
     /// <summary>
-    /// An implementation of <see cref="IRecentFileManager"/> that persists recently used files using the Application State persistence mechanism.
-    /// This class expects to receive a message from the <see cref="IMessenger"/> with a <see cref="ApplicationStateRequestedMessage"/> message. To
-    /// this message this class will add any state it needs to save.  It also expects to receive a <see cref="ApplicationStateLoadedMessage"/> from
-    /// the <see cref="IMessenger"/>, the recently used file list will be extracted from this message at start up.
+    ///     An implementation of <see cref="IRecentFileManager" /> that persists recently used files using the Application
+    ///     State persistence mechanism.
+    ///     This class expects to receive a message from the <see cref="IMessenger" /> with a
+    ///     <see cref="ApplicationStateRequestedMessage" /> message. To
+    ///     this message this class will add any state it needs to save.  It also expects to receive a
+    ///     <see cref="ApplicationStateLoadedMessage" /> from
+    ///     the <see cref="IMessenger" />, the recently used file list will be extracted from this message at start up.
     /// </summary>
     public class AppStateRecentFileManager : IRecentFileManager
     {
         private Dictionary<string, RecentFileV1> files = new Dictionary<string, RecentFileV1>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AppStateRecentFileManager"/> class.
+        ///     Initializes a new instance of the <see cref="AppStateRecentFileManager" /> class.
         /// </summary>
         /// <param name="messenger">The MvvmLight messenger.</param>
         /// <exception cref="System.ArgumentNullException">messenger cannot be null.</exception>
@@ -35,17 +39,17 @@ namespace Rees.Wpf.RecentFiles
         }
 
         /// <summary>
-        /// Adds a file to the recently used list.
+        ///     Adds a file to the recently used list.
         /// </summary>
         /// <param name="fullFileName">Full name of the file.</param>
         /// <returns>
-        /// The full and updated list of all recently used files.
+        ///     The full and updated list of all recently used files.
         /// </returns>
         public IEnumerable<KeyValuePair<string, string>> AddFile(string fullFileName)
         {
-            if (this.files.ContainsKey(fullFileName))
+            if (files.ContainsKey(fullFileName))
             {
-                this.files[fullFileName].When = DateTime.Now;
+                files[fullFileName].When = DateTime.Now;
             }
             else
             {
@@ -55,14 +59,14 @@ namespace Rees.Wpf.RecentFiles
                     Name = GetName(fullFileName),
                     When = DateTime.Now
                 };
-                this.files.Add(fullFileName, newFile);
+                files.Add(fullFileName, newFile);
             }
 
             return ConvertAndReturnRecentFiles();
         }
 
         /// <summary>
-        /// All the files in the current list.
+        ///     All the files in the current list.
         /// </summary>
         public IEnumerable<KeyValuePair<string, string>> Files()
         {
@@ -70,51 +74,51 @@ namespace Rees.Wpf.RecentFiles
         }
 
         /// <summary>
-        /// Converts the internal recently used file list into a Dto object ready for persistence.
+        ///     Converts the internal recently used file list into a Dto object ready for persistence.
         /// </summary>
         public IPersistent GetPersistentData()
         {
-            return new RecentFilesPersistentModelV1(this.files);
+            return new RecentFilesPersistentModelV1(files);
         }
 
         /// <summary>
-        /// Removes the specified file from the list.
+        ///     Removes the specified file from the list.
         /// </summary>
         /// <param name="fullFileName">Full name of the file.</param>
         /// <returns>
-        /// The full and updated list of all recently used files.
+        ///     The full and updated list of all recently used files.
         /// </returns>
         public IEnumerable<KeyValuePair<string, string>> Remove(string fullFileName)
         {
-            if (!this.files.ContainsKey(fullFileName))
+            if (!files.ContainsKey(fullFileName))
             {
                 return ConvertAndReturnRecentFiles();
             }
 
-            this.files.Remove(fullFileName);
+            files.Remove(fullFileName);
             return ConvertAndReturnRecentFiles();
         }
 
         /// <summary>
-        /// Updates a file in the list with a date stamp of now.
+        ///     Updates a file in the list with a date stamp of now.
         /// </summary>
         /// <param name="fullFileName">Full name of the file.</param>
         /// <returns>
-        /// The full and updated list of all recently used files.
+        ///     The full and updated list of all recently used files.
         /// </returns>
         public IEnumerable<KeyValuePair<string, string>> UpdateFile(string fullFileName)
         {
-            if (!this.files.ContainsKey(fullFileName))
+            if (!files.ContainsKey(fullFileName))
             {
                 return ConvertAndReturnRecentFiles();
             }
 
-            this.files[fullFileName].When = DateTime.Now;
+            files[fullFileName].When = DateTime.Now;
             return ConvertAndReturnRecentFiles();
         }
 
         /// <summary>
-        /// Gets a friendly name for the file.
+        ///     Gets a friendly name for the file.
         /// </summary>
         /// <param name="fullFileName">Full name of the file.</param>
         protected virtual string GetName(string fullFileName)
@@ -124,7 +128,7 @@ namespace Rees.Wpf.RecentFiles
 
         private IEnumerable<KeyValuePair<string, string>> ConvertAndReturnRecentFiles()
         {
-            List<KeyValuePair<string, string>> results = this.files
+            var results = files
                 .OrderByDescending(f => f.Value.When)
                 .Select(f => new KeyValuePair<string, string>(f.Key, f.Value.Name))
                 .ToList();
@@ -133,10 +137,10 @@ namespace Rees.Wpf.RecentFiles
 
         private void OnApplicationStateLoaded(ApplicationStateLoadedMessage message)
         {
-            IPersistent emptyModel = new RecentFilesPersistentModelV1(this.files);
-            if (message.RehydratedModels.ContainsKey(emptyModel.GetType()))
+            Type recentFilesModelType = typeof (RecentFilesPersistentModelV1);
+            if (message.RehydratedModels.ContainsKey(recentFilesModelType))
             {
-                this.files = message.RehydratedModels[emptyModel.GetType()].AdaptModel<Dictionary<string, RecentFileV1>>();
+                files = ((RecentFilesPersistentModelV1) message.RehydratedModels[recentFilesModelType]).RecentlyUsedFiles;
             }
         }
 

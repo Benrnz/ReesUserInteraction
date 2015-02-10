@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Rees.UserInteraction.Contracts;
 
 namespace Rees.Wpf.RecentFiles
 {
@@ -18,33 +19,26 @@ namespace Rees.Wpf.RecentFiles
         /// <summary>
         ///     Initializes a new instance of the <see cref="RecentFilesPersistentModelV1" /> class.
         /// </summary>
-        /// <param name="model">The model.</param>
+        /// <param name="recentlyUsedFiles">The model.</param>
         /// <exception cref="System.ArgumentNullException">model</exception>
         /// <exception cref="System.ArgumentException">
-        /// Will be thrown if the <paramref name="model"/> is not castable to Dictionary&lt;string, RecentFileV1&gt;
+        /// Will be thrown if the <paramref name="recentlyUsedFiles"/> is not castable to Dictionary&lt;string, RecentFileV1&gt;
         /// </exception>
-        public RecentFilesPersistentModelV1(object model)
+        public RecentFilesPersistentModelV1(Dictionary<string, RecentFileV1> recentlyUsedFiles)
         {
-            if (model == null)
+            if (recentlyUsedFiles == null)
             {
-                throw new ArgumentNullException("model");
+                throw new ArgumentNullException("recentlyUsedFiles");
             }
 
-            var dictionaryOfFiles = model as Dictionary<string, RecentFileV1>;
-            if (dictionaryOfFiles == null)
-            {
-                throw new ArgumentException(
-                    "model argument should be a Dictionary<string, RecentFileV1> and its " + model.GetType(), "model");
-            }
-
-            Model = dictionaryOfFiles;
+            RecentlyUsedFiles = recentlyUsedFiles;
         }
 
         /// <summary>
         ///     Gets the sequence number for this implementation. This is used to broadcast more crucial higher priority persistent
         ///     data out first, if any.
         /// </summary>
-        public int Sequence
+        public int LoadSequence
         {
             get { return 100; }
         }
@@ -52,15 +46,6 @@ namespace Rees.Wpf.RecentFiles
         /// <summary>
         /// Gets or sets the model to persist to permentant storage.
         /// </summary>
-        public object Model { get; set; }
-
-        /// <summary>
-        /// Adapts the model into the given type. This is a convience method to get the model and cast it in one tidy call.
-        /// </summary>
-        /// <typeparam name="T">The type to attempt to cast to.</typeparam>
-        public T AdaptModel<T>()
-        {
-            return (T) Model;
-        }
+        public Dictionary<string, RecentFileV1> RecentlyUsedFiles { get; set; }
     }
 }
