@@ -14,6 +14,7 @@ namespace Rees.Wpf.RecentFiles
         /// </summary>
         public RecentFilesPersistentModelV1()
         {
+            RecentlyUsedFiles = new Dictionary<string, RecentFileV1>();
         }
 
         /// <summary>
