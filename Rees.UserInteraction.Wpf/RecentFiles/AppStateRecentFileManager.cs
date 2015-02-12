@@ -148,12 +148,11 @@ namespace Rees.Wpf.RecentFiles
             if (recentFilesState != null)
             {
                 files = recentFilesState.RecentlyUsedFiles;
-            }
-
-            var handler = StateDataRestored;
-            if (handler != null)
-            {
-                handler(this, EventArgs.Empty);
+                var handler = StateDataRestored;
+                if (handler != null)
+                {
+                    handler(this, EventArgs.Empty);
+                }
             }
         }
 
