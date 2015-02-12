@@ -137,10 +137,10 @@ namespace Rees.Wpf.RecentFiles
 
         private void OnApplicationStateLoaded(ApplicationStateLoadedMessage message)
         {
-            Type recentFilesModelType = typeof (RecentFilesPersistentModelV1);
-            if (message.RehydratedModels.ContainsKey(recentFilesModelType))
+            var recentFilesState = message.ElementOfType<RecentFilesPersistentModelV1>();
+            if (recentFilesState != null)
             {
-                files = ((RecentFilesPersistentModelV1) message.RehydratedModels[recentFilesModelType]).RecentlyUsedFiles;
+                files = recentFilesState.RecentlyUsedFiles;
             }
         }
 
