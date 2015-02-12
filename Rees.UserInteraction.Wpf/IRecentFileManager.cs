@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Rees.UserInteraction.Contracts;
+using Rees.Wpf.ApplicationState;
 
 namespace Rees.Wpf
 {
@@ -41,5 +43,12 @@ namespace Rees.Wpf
         /// <param name="fullFileName">Full name of the file.</param>
         /// <returns>The full and updated list of all recently used files.</returns>
         IEnumerable<KeyValuePair<string, string>> UpdateFile(string fullFileName);
+
+        /// <summary>
+        ///     Occurs when the <see cref="ApplicationStateLoadedMessage" /> is receieved and the state data has been restored into
+        ///     the
+        ///     internal model.
+        /// </summary>
+        event EventHandler StateDataRestored;
     }
 }

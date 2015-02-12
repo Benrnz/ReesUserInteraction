@@ -39,6 +39,13 @@ namespace Rees.Wpf.RecentFiles
         }
 
         /// <summary>
+        ///     Occurs when the <see cref="ApplicationStateLoadedMessage" /> is receieved and the state data has been restored into
+        ///     the
+        ///     internal model.
+        /// </summary>
+        public event EventHandler StateDataRestored;
+
+        /// <summary>
         ///     Adds a file to the recently used list.
         /// </summary>
         /// <param name="fullFileName">Full name of the file.</param>
@@ -116,13 +123,6 @@ namespace Rees.Wpf.RecentFiles
             files[fullFileName].When = DateTime.Now;
             return ConvertAndReturnRecentFiles();
         }
-
-        /// <summary>
-        ///     Occurs when the <see cref="ApplicationStateLoadedMessage" /> is receieved and the state data has been restored into
-        ///     the
-        ///     internal model.
-        /// </summary>
-        public event EventHandler StateDataRestored;
 
         /// <summary>
         ///     Gets a friendly name for the file.
