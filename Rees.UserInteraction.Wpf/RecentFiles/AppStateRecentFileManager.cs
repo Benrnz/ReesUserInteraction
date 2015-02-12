@@ -118,6 +118,13 @@ namespace Rees.Wpf.RecentFiles
         }
 
         /// <summary>
+        ///     Occurs when the <see cref="ApplicationStateLoadedMessage" /> is receieved and the state data has been restored into
+        ///     the
+        ///     internal model.
+        /// </summary>
+        public event EventHandler StateDataRestored;
+
+        /// <summary>
         ///     Gets a friendly name for the file.
         /// </summary>
         /// <param name="fullFileName">Full name of the file.</param>
@@ -141,6 +148,12 @@ namespace Rees.Wpf.RecentFiles
             if (recentFilesState != null)
             {
                 files = recentFilesState.RecentlyUsedFiles;
+            }
+
+            var handler = StateDataRestored;
+            if (handler != null)
+            {
+                handler(this, EventArgs.Empty);
             }
         }
 
