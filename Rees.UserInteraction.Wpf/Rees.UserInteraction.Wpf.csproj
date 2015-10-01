@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rees.Wpf</RootNamespace>
     <AssemblyName>Rees.Wpf</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -112,6 +112,10 @@
     <Compile Include="UserInteraction\WindowsOpenFileDialog.cs" />
     <Compile Include="UserInteraction\WindowsQuestionBoxYesNo.cs" />
     <Compile Include="UserInteraction\WpfWaitCursor.cs" />
+    <Compile Include="ValidationRules\GreaterThanOrEqualToZeroRule.cs" />
+    <Compile Include="ValidationRules\NotEqualToZeroRule.cs" />
+    <Compile Include="ValidationRules\NotNullAndNotBlankRule.cs" />
+    <Compile Include="ValidationRules\StringNotNullAndNotBlankRule.cs" />
     <Compile Include="VisualTreeSearch.cs" />
     <Compile Include="WpfViewLoader.cs" />
   </ItemGroup>
