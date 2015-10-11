@@ -19,6 +19,7 @@
     <licenseUrl>https://github.com/Benrnz/ReesUserInteraction/blob/master/LICENSE</licenseUrl>
     <dependencies>
       <dependency id="Rees.UserInteraction.Contracts" version="[1.0,2.0)" />
+      <dependency id="MvvmLightLibs" version="[5.0,6.0)" />
     </dependencies>
   </metadata>
   <files>

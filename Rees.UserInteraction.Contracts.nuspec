@@ -18,9 +18,6 @@
     <licenseUrl>https://github.com/Benrnz/ReesUserInteraction/blob/master/LICENSE</licenseUrl>
   </metadata>
     <files>
-      <file src="bin\Release\Rees.UserInteraction.Contracts.dll" target="lib\net46" />
-      <file src="bin\Release\Rees.UserInteraction.Contracts.xml" target="lib\net46" />
-      <file src="bin\Release\Rees.UserInteraction.Contracts.pdb" target="lib\net46" />
       <file src="..\Rees.UserInteraction.PCLContracts\bin\Release\Rees.UserInteraction.PCLContracts.dll" target="lib\portable-windows8+net45" />
       <file src="..\Rees.UserInteraction.PCLContracts\bin\Release\Rees.UserInteraction.PCLContracts.xml" target="lib\portable-windows8+net45" />
       <file src="..\Rees.UserInteraction.PCLContracts\bin\Release\Rees.UserInteraction.PCLContracts.pdb" target="lib\portable-windows8+net45" />
