@@ -5,6 +5,7 @@
     <version>$version$</version>
     <authors>Rees.biz</authors>
     <owners>Rees.biz</owners>
+    <description>Contracts for the Rees.UserInteraction frameworks.</description>
 	<summary>
 	  A toolkit for abstracting user interaction in Windows based UI's.
       For example: Using the IUserMessageBox provides several advantages:
@@ -12,12 +13,14 @@
       Enables unit testing with clear concise tests, and no pop-ups.
       Code can be shared across several Windows based UI technologies.
     </summary>
-    <description>Contracts for the Rees.UserInteraction frameworks.</description>
     <language>en-US</language>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://github.com/Benrnz/ReesUserInteraction/blob/master/LICENSE</licenseUrl>
   </metadata>
     <files>
+      <file src="bin\Release\Rees.UserInteraction.Contracts.dll" target="lib\net46" />
+      <file src="bin\Release\Rees.UserInteraction.Contracts.xml" target="lib\net46" />
+      <file src="bin\Release\Rees.UserInteraction.Contracts.pdb" target="lib\net46" />
       <file src="..\Rees.UserInteraction.PCLContracts\bin\Release\Rees.UserInteraction.PCLContracts.dll" target="lib\portable-windows8+net45" />
       <file src="..\Rees.UserInteraction.PCLContracts\bin\Release\Rees.UserInteraction.PCLContracts.xml" target="lib\portable-windows8+net45" />
       <file src="..\Rees.UserInteraction.PCLContracts\bin\Release\Rees.UserInteraction.PCLContracts.pdb" target="lib\portable-windows8+net45" />
