@@ -5,24 +5,26 @@
     <version>$version$</version>
     <authors>Rees.biz</authors>
     <owners>Rees.biz</owners>
-    <description>
+    <description>The WPF Rees.UserInteraction framework.</description>
+    <summary>
       The Rees.UserInteraction.Contracts library is 
       a toolkit for abstracting user interaction in Windows based UI's.
       Rees.UserInteraction.Wpf is a Windows Presentation Foundation
       implementation for use with WPF applications.  This allows easy
       unit testing of ViewModels, clean dependency injection, and 
       promotes consistent straightforward code.  
-    </description>
+    </summary>
     <language>en-US</language>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://github.com/Benrnz/ReesUserInteraction/blob/master/LICENSE</licenseUrl>
     <dependencies>
-      <dependency id="Rees.UserInteraction.Contracts" version="$version$" />
+      <dependency id="Rees.UserInteraction.Contracts" version="[1.0,2.0)" />
+      <dependency id="MvvmLightLibs" version="[5.0,6.0)" />
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\Rees.Wpf.dll" target="lib\net451" />
-    <file src="bin\Release\Rees.Wpf.xml" target="lib\net451" />
-    <file src="bin\Release\Rees.Wpf.pdb" target="lib\net451" />
+    <file src="bin\Release\Rees.Wpf.dll" target="lib\net46" />
+    <file src="bin\Release\Rees.Wpf.xml" target="lib\net46" />
+    <file src="bin\Release\Rees.Wpf.pdb" target="lib\net46" />
   </files>
 </package>

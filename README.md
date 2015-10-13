@@ -1,7 +1,7 @@
 Rees.UserInteraction
 ===================
 
-[![benrnz MyGet Build Status](https://www.myget.org/BuildSource/Badge/benrnz?identifier=89387de5-3ff0-4d89-b19d-1569a1c4d37a)](https://www.myget.org/)
+[![benrnz MyGet Build Status](https://www.myget.org/BuildSource/Badge/benrnz?identifier=86047692-b121-4e2e-af64-17ef1ac8152f)](https://www.myget.org/)
 
 A toolkit for abstracting user interaction in Windows based UI's. 
 For example: Using the IUserMessageBox provides several advantages:
